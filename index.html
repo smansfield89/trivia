@@ -1,0 +1,70 @@
+<!--Create new html doc-->
+
+<!DOCTYPE html>
+
+<!--start html-->
+
+
+<html>
+
+<!--insert head - title, links-->
+	<head>
+		<title>Simple Office Trivia</title>
+		<link type='text/css' rel='stylesheet' href='style.css'/>
+    </head>
+    
+<!--build body container with title, h1, and the div for the trivia
+    answer buttons-->
+
+	<body>
+		<div id='container'>
+            
+            <div id='title'>
+				<h1>Michael Scott's Dunder Mifflin Scranton Meredith Palmer Memorial Celebrity Rabies Awareness Pro-Am Fun Run Race For The Cure Trivia Game</h1>
+            </div>
+            
+               <br/>
+               
+              <div id='trivia'></div>
+              
+    		    <div class='button' id='next'><a href='#'>Next</a></div>
+    		    <div class='button' id='prev'><a href='#'>Previous</a></div>
+                <div class='button' id='start'> <a href='#'>Start From Beginning</a></div>
+                
+        <!--close the trivia container-->
+        </div>
+
+        <!--timer--> <!-- i struggled getting the timer to reset when the game restarts and couldn't
+        figure out how to get it to end the trivia game when it ran out of time..-->
+
+        <div style = "font-weight: bold" id ="time-left"></div>
+        <script type = "text/javascript">    
+             
+        var total_seconds = 60 * 1.5;
+        var c_minutes = parseInt(total_seconds/60);
+        var c_seconds = parseInt(total_seconds%60);
+      
+        function checkTime(){
+          document.getElementById("time-left").innerHTML = 'Time Left: '  + c_minutes + ' minutes ' + c_seconds + ' seconds' ;
+          if (total_seconds <=0){
+              setTimeout('document.quiz.submit()',1);
+          } else {
+              total_seconds = total_seconds -1;
+              c_minutes = parseInt(total_seconds/60);
+              c_seconds = parseInt(total_seconds%60);
+              setTimeout("checkTime()",1000);
+      
+          }}
+          setTimeout("checkTime()",1000);
+          </script>
+
+        <!--add necessary scripts..-->
+
+		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
+
+        <script type='text/javascript' src='trivia.js'></script>
+        
+        <!--close body and html-->
+
+	</body>
+</html>
